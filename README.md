@@ -9,7 +9,7 @@ My personal configs and scripts.
     * commentary
     * asyncrun
 * Automatically set PATH to current git directory
-* Experimental commands to swith to cyrillic, french, and greek transliteration. Using respective commands (c|f|g)on and (c|f|g)off to turn on and off the respective transliteration.
+* Experimental commands to swith to cyrillic, french, and greek transliteration. Using respective commands `(c|f|g)on` and `(c|f|g)off` to turn on and off the respective transliteration.
 * Move cursor to last location when opening file
 
 ## Zsh
