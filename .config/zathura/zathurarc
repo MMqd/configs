@@ -1,0 +1,31 @@
+set default-bg \#1F1F1F
+set inputbar-bg \#1F1F1F
+set tabbar-bg \#1F1F1F
+set statusbar-bg \#1F1F1F
+set font "monospace normal 12"
+set selection-clipboard clipboard
+set adjust-open "best-fit"
+
+set recolor   
+set recolor-lightcolor \#1F1F1F
+set recolor-keephue
+set default-bg \#1F1F1F
+
+unmap normal n
+unmap normal i
+unmap normal e
+unmap normal o
+
+unmap normal h
+unmap normal j
+unmap normal k
+unmap normal l
+
+map n scroll left
+map e scroll down
+map i scroll up
+map o scroll right
+
+map E zoom in
+map I zoom out
+map h zoom best-fit

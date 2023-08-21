@@ -1,0 +1,97 @@
+" You can edit this file by hand.
+" The " character at the beginning of a line comments out the line.
+" Blank lines are ignored.
+
+" The Default color scheme is used for any directory that does not have
+" a specified scheme and for parts of user interface like menus. A
+" color scheme set for a base directory will also
+" be used for the sub directories.
+
+" The standard ncurses colors are:
+" Default = -1 = None, can be used for transparency or -1 color
+" Black = 0
+" Red = 1
+" Green = 2
+" Yellow = 3
+" Blue = 4
+" Magenta = 5
+" Cyan = 6
+" White = 7
+
+" Light versions of colors are also available (set bold attribute):
+" LightBlack
+" LightRed
+" LightGreen
+" LightYellow
+" LightBlue
+" LightMagenta
+" LightCyan
+" LightWhite
+
+" Available attributes (some of them can be combined):
+" bold
+" underline
+" reverse or inverse
+" standout
+" italic (on unsupported systems becomes reverse)
+" none
+
+" Vifm supports 256 colors you can use color numbers 0-255
+" (requires properly set up terminal: set your TERM environment variable
+" (directly or using resources) to some color terminal name (e.g.
+" xterm-256color) from /usr/lib/terminfo/; you can check current number
+" of colors in your terminal with tput colors command)
+
+" hi group cterm=attrs ctermfg=foreground_color ctermbg=background_color
+
+hi clear
+
+hi Win cterm=none ctermfg=white ctermbg=-1
+hi Directory cterm=none ctermfg=cyan ctermbg=-1
+hi Link cterm=none ctermfg=yellow ctermbg=-1
+hi BrokenLink cterm=none ctermfg=red ctermbg=-1
+hi Socket cterm=none ctermfg=magenta ctermbg=-1
+hi Device cterm=none ctermfg=red ctermbg=-1
+hi Fifo cterm=none ctermfg=cyan ctermbg=-1
+hi Executable cterm=none ctermfg=green ctermbg=-1
+hi Selected cterm=reverse ctermfg=-1 ctermbg=-1
+hi CurrLine cterm=bold,reverse ctermfg=-1 ctermbg=-1
+hi TopLine cterm=none ctermbg=236 ctermfg=15
+hi TopLineSel cterm=bold ctermfg=15 ctermbg=-1
+hi StatusLine cterm=bold ctermbg=236 ctermfg=15
+hi WildMenu cterm=underline,reverse ctermfg=white ctermbg=black
+hi CmdLine cterm=none ctermfg=white ctermbg=black
+hi ErrorMsg cterm=none ctermfg=red ctermbg=black
+hi Border cterm=none ctermfg=15 ctermbg=236
+hi JobLine cterm=bold,reverse ctermfg=black ctermbg=white
+hi SuggestBox cterm=bold ctermfg=-1 ctermbg=-1
+hi CmpMismatch cterm=bold ctermfg=white ctermbg=red
+hi AuxWin cterm=bold,underline,reverse,standout,italic ctermfg=-1 ctermbg=-1
+hi TabLine cterm=none ctermfg=white ctermbg=black
+hi TabLineSel cterm=bold,reverse ctermfg=-1 ctermbg=-1
+hi User1 cterm=bold,underline,reverse,standout,italic ctermfg=-1 ctermbg=-1
+hi User2 cterm=bold,underline,reverse,standout,italic ctermfg=-1 ctermbg=-1
+hi User3 cterm=bold,underline,reverse,standout,italic ctermfg=-1 ctermbg=-1
+hi User4 cterm=bold,underline,reverse,standout,italic ctermfg=-1 ctermbg=-1
+hi User5 cterm=bold,underline,reverse,standout,italic ctermfg=-1 ctermbg=-1
+hi User6 cterm=bold,underline,reverse,standout,italic ctermfg=-1 ctermbg=-1
+hi User7 cterm=bold,underline,reverse,standout,italic ctermfg=-1 ctermbg=-1
+hi User8 cterm=bold,underline,reverse,standout,italic ctermfg=-1 ctermbg=-1
+hi User9 cterm=bold,underline,reverse,standout,italic ctermfg=-1 ctermbg=-1
+hi OtherWin cterm=none,underline,reverse,standout,italic ctermfg=-1 ctermbg=-1
+hi {COPYRIGHT,COPYING*,BUGS,ChangeLog*,FAQ,INSTALL*,LICENSE,NEWS,README*,AUTHORS,TODO,THANKS}
+        \ cterm=none ctermfg=187 ctermbg=-1
+hi {Makefile,Makefile.am,Makefile.in,Makefile.win,*.mak,*.mk,CMakeLists.txt}
+        \ cterm=none ctermfg=121 ctermbg=-1
+hi {*.7z,*.ace,*.arj,*.bz2,*.cpio,*.deb,*.dz,*.gz,*.jar,*.lzh,*.lzma,*.rar,*.rpm,*.rz,*.tar,*.taz,*.tb2,*.tbz,*.tbz2,*.tgz,*.tlz,*.trz,*.txz,*.tz,*.tz2,*.xz,*.z,*.zip,*.zoo}
+        \ cterm=none ctermfg=215 ctermbg=-1
+hi {*.djvu,*.htm,*.html,*.shtml,*.php,*.css,*.markdown,*.md,*[^0-9].[1-9],*.mkd,*.org,*.pandoc,*.pdc,*.pdf,*.epub,*.tex,*.txt,*.xhtml,*.xml,*.pptx,*.ppt,*.doc,*.docx,*.xls,*.xls[mx]}
+        \ cterm=none ctermfg=218 ctermbg=-1
+hi {*.aac,*.anx,*.asf,*.au,*.avi,*.ts,*.axa,*.axv,*.divx,*.flac,*.m2a,*.m2v,*.m4a,*.m4p,*.m4v,*.mid,*.midi,*.mka,*.mkv,*.mov,*.mp3,*.mp4,*.flv,*.mp4v,*.mpc,*.mpeg,*.mpg,*.nuv,*.oga,*.ogg,*.ogv,*.ogx,*.pbm,*.pgm,*.qt,*.ra,*.ram,*.rm,*.spx,*.vob,*.wav,*.wma,*.wmv,*.xvid,*.ac3,*.opus}
+        \ cterm=none ctermfg=49 ctermbg=-1
+hi {*.bmp,*.gif,*.jpeg,*.jpg,*.ico,*.png,*.ppm,*.svg,*.svgz,*.tga,*.tif,*.tiff,*.xbm,*.xcf,*.xpm,*.xspf,*.xwd}
+        \ cterm=none ctermfg=117 ctermbg=-1
+hi {*.bat,*.btm,*.cmd,*.com,*.dll,*.exe,*.run,*.msu,*.msi,*.sh,*.bash}
+        \ cterm=none ctermfg=77 ctermbg=-1
+hi {*.patch,*.diff,*.py,*.[ch]pp,*.mk,*.c,*.h,*.[ch]pp,*.cc,*.hs}
+        \ cterm=none ctermfg=193 ctermbg=-1

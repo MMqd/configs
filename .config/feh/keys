@@ -1,0 +1,7 @@
+zoom_out I C-Down
+zoom_in E C-Up
+toggle_pointer
+scroll_right n Right
+scroll_down  e Down
+scroll_up    i Up
+scroll_left  o Left

@@ -1,0 +1,118 @@
+set vicmd="nvim -p"
+view!
+set syscalls trash smartcase vimhelp incsearch ignorecase wildmenu nofollowlinks sortnumbers
+set history=100
+set undolevels=100
+"set norunexec
+set timefmt=%m/%d\ %H:%M
+set wildstyle=popup
+set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+set scrolloff=4
+set dotdirs=rootparent
+set tuioptions=u
+set classify=':exe:'
+set number relativenumber
+set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,phistory,fhistory,dirstack,registers,bookmarks,bmarks
+colorscheme Default
+fileviewer *.pdf pdftotext -nopgbrk %c -
+fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,*.as[fx],*.m2ts,*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus ffprobe %c 2>&1 | grep -A90 'Input'
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.webp,*.svg
+        \ vifmimg draw %px %py %pw %ph %c
+        \ %pc
+        \ vifmimg clear 
+"fileviewer *.zip,*.jar,*.war,*.ear,*.oxt,*.7z 7z l %c
+"fileviewer *.tgz,*.tar.gz tar -tf %c
+"fileviewer *.tar.bz2,*.tbz2 tar -tf %c
+"fileviewer *.tar.txz,*.txz xz --list %c
+"fileviewer *.tar tar -tf %c
+fileviewer *.doc catdoc %c
+fileviewer *.docx docx2txt.pl %f -
+filextype *.odt,*.ods,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx libreoffice %f %i &
+" filextype *.pdf libreoffice --draw %f %i &, zathura %c %i &, apvlv %c, xpdf %c
+filextype *.pdf,*.epub,*.djvu,*.ps,*.eps,*.ps.gz zathura %f %i &
+filextype *.xopp xournalpp %c %i &
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.xpm,*.webp,*.svg feh -F %c &
+filextype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.mid ffplay %c %i &
+filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,*.as[fx],*.m2ts mpv --no-sub %c %i &
+filextype *.gif mpv --loop-file=inf %c %i &
+"ffplay -sn
+filextype *.mmpz,*.bak lmms %f 2>/dev/null &
+filextype *.blend,*.blend2 blender %f 2>/dev/null &
+filetype *.html,*.htm links, lynx
+filetype *.xcf gimp -s %f 2>/dev/null &
+filetype *.o nm %f | less
+filetype *.md5
+       \ {Check MD5 hash sum}
+       \ md5sum -c %f %S,
+filetype *.zip,*.jar,*.war,*.ear,*.oxt,*.apkg
+       \ {Mount with fuse-zip}
+       \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
+       \ {View contents}
+       \ zip -sf %c | less,
+       \ {Extract here}
+       \ tar -xf %c,
+filetype *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz
+       \ {Mount with archivemount}
+       \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
+filetype *.rar
+       \ {Mount with rar2fs}
+       \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
+filetype *.iso
+       \ {Mount with fuseiso}
+       \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
+filetype *.7z 7z l %c | less
+"       \ {Mount with fuse-7z}
+"       \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
+if has('win')
+elseif executable('xclip')
+    nnoremap yd :!echo %d | xclip %i<cr>
+    nnoremap yf :!echo %c:p | xclip %i<cr>
+elseif executable('xsel')
+    nnoremap yd :!echo -n %d | xsel --input --primary %i &&
+                \ echo -n %d | xsel --clipboard --input %i<cr>
+    nnoremap yf :!echo -n %c:p | xsel --input --primary %i &&
+                \ echo -n %c:p | xsel --clipboard --input %i<cr>
+endif
+nnoremap s :shell<cr>
+nnoremap S :sort<cr>
+"nnoremap ,w :set wrap!<cr>
+nnoremap M :mkdir<space>""<left>
+nnoremap w :!nvim<space>""<left>
+noremap h cw<c-a>
+noremap n h
+noremap i k
+noremap e j
+noremap o l
+noremap t f
+noremap a F
+noremap fal al
+noremap frl rl
+nnoremap U <C-R>
+nnoremap <CR> :
+noremap v av
+noremap O n
+noremap N O
+noremap <C-I> <C-B>
+noremap <C-E> <C-F>
+noremap r :bmgo<space>
+noremap <C-R> :bmarks<CR>
+noremap R :bm<space>
+noremap <C-T> :make<space>
+nnoremap frl rl
+nnoremap fal al
+"noremap q :!DirSize="$(du -cshx | tail -n 1 | cut -d"	" -f1)"<cr>:echo $DirSize<cr>
+"^replaces edit search in editor
+command! df df -h %m 2> /dev/null
+command! zip zip -r %f.zip %f
+command! run !! ./%f
+command! make !!make %a
+command! mkcd :mkdir %a | cd %a
+command! reload :write | restart
+command! x :!outputdir="$(echo %c | cut -f 1 -d '.')" && mkdir $outputdir && 7z x -o$outputdir %c
+command! fl :!teensy_loader_cli --mcu=atmega32u4 -w %c
+command! e :!./%c
+command! se :!sudo ./%c
+command! tarc :!tar --use-compress-program=pigz -cf %c.tar.gz %c
+command! tard :!tar --use-compress-program=pigz -xf %c
+command! count find . -type f | wc -l
+command! mfl :!make ergodox_ez:MMqd-ergodox-ez && teensy_loader_cli --mcu=atmega32u4 -w ergodox_ez_base_MMqd-ergodox-ez.hex && rm ergodox_ez_base_MMqd-ergodox-ez.hex
