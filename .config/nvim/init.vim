@@ -1,4 +1,6 @@
 set lazyredraw number relativenumber nocompatible tabstop=4 shiftwidth=4 cursorline ignorecase smartcase
+set backspace=indent,eol,start
+
 noremap O n
 noremap N N
 
@@ -103,7 +105,7 @@ endif
 syntax enable
 
 autocmd VimEnter * if executable('git')
-  \ | let gitroot = systemlist('git rev-parse --show-toplevel')[0] 
+  \ | let gitroot = systemlist('git rev-parse --show-toplevel')[0]
   \ | if v:shell_error == 0 && isdirectory(gitroot)
   \ |   exe 'cd ' . gitroot
   \ | endif
