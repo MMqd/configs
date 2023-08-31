@@ -37,7 +37,7 @@ filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv]
 filextype *.gif mpv --loop-file=inf %c %i &
 "ffplay -sn
 filextype *.mmpz,*.bak lmms %f 2>/dev/null &
-filextype *.blend,*.blend2 blender %f 2>/dev/null &
+filextype *.blend,*.blend1,*.blend2 blender %f 2>/dev/null &
 filetype *.html,*.htm links, lynx
 filetype *.xcf gimp -s %f 2>/dev/null &
 filetype *.o nm %f | less

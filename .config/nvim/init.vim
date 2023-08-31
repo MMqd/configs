@@ -1,5 +1,6 @@
 set lazyredraw number relativenumber nocompatible tabstop=4 shiftwidth=4 cursorline ignorecase smartcase
 set backspace=indent,eol,start
+filetype on
 
 noremap O n
 noremap N N
@@ -59,6 +60,19 @@ command Q qa
 command WQ wqa
 command W wa
 
+noremap <M-n> <C-w>h
+noremap <M-e> <C-w>j
+noremap <M-i> <C-w>k
+noremap <M-o> <C-w>l
+
+noremap <M-N> <C-w>H
+noremap <M-E> <C-w>J
+noremap <M-I> <C-w>K
+noremap <M-O> <C-w>L
+
+noremap <M-s> <C-w>n
+noremap <M-r> :split<CR>:term<CR>
+noremap <M-d> <C-w>T
 
 "noremap b :echo "Use 'W' instead"<CR>
 command! Con source ~/.config/nvim/con.vim
@@ -68,6 +82,7 @@ command! Foff source ~/.config/nvim/foff.vim
 command! Gon source ~/.config/nvim/gon.vim
 command! Goff source ~/.config/nvim/goff.vim
 command! R source ~/.config/nvim/init.vim
+command! C w !octave $HOME/.config/octave/octave_conf.m
 "au filetype cpp :iabbrev for for(int<space>i=0;<space>i<0;<space>i++){<CR><TAB><CR>}<UP><Right><BS>
 " cnoremap make<space>b<CR> :w<CR>:make<space>b<CR>
 " cnoremap make<space>br<CR> :w<CR>:make<space>br<CR>
@@ -89,6 +104,12 @@ elseif (expand('%:e')=="py")
 elseif (expand('%:e')=="sh")
 	set foldnestmax=1 foldmethod=syntax
 	nnoremap <C-T> :w<CR>:AsyncRun -mode=term $VIM_FILEPATH<CR><CR>
+elseif (expand('%:e')=="html")
+	set foldnestmax=1 foldmethod=syntax
+elseif (expand('%:e')=="css")
+	set foldnestmax=1 foldmethod=syntax
+elseif (expand('%:e')=="js")
+	set foldnestmax=1 foldmethod=syntax
 elseif (expand('%:e')=="gd")
 	packadd commentary
 	setlocal commentstring=#\ %s
@@ -115,6 +136,9 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
+
+" Set the file type based on the detected file type
+autocmd BufWritePost * if &filetype == '' | filetype detect | endif
 
 " function! CustomComplete(arglead, cmdline, cursorpos)
 "   let issues = systemlist('git issue list')
