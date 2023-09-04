@@ -6,6 +6,7 @@ My personal configs and scripts.
 * Plugins:
     * vim-fugitive
     * vim-godot
+    * vifm-vim
     * commentary
     * asyncrun
 * Automatically set PATH to current git directory
