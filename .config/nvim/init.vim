@@ -71,8 +71,23 @@ noremap <M-I> <C-w>K
 noremap <M-O> <C-w>L
 
 noremap <M-s> <C-w>n
+if executable('vifm')
+  noremap <M-t> :split<CR>:Vifm<CR>
+else
+  noremap <M-t> :split<CR>:Ex<CR>
+endif
 noremap <M-r> :split<CR>:term<CR>
 noremap <M-d> <C-w>T
+
+map <M-H> <Plug>(wintabs_previous)
+map <M-L> <Plug>(wintabs_next)
+map <M-T>c <Plug>(wintabs_close)
+map <M-T>u <Plug>(wintabs_undo)
+map <M-T>o <Plug>(wintabs_only)
+map <M-W>c <Plug>(wintabs_close_window)
+map <M-W>o <Plug>(wintabs_only_window)
+command! Tabc WintabsCloseVimtab
+command! Tabo WintabsOnlyVimtab
 
 "noremap b :echo "Use 'W' instead"<CR>
 command! Con source ~/.config/nvim/con.vim
